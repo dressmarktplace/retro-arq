@@ -11,7 +11,7 @@ export const CreateThriftStorePage = () => {
                 </fieldset>
 
                 <fieldset>
-                    <label for="category">Categorias:</label>
+                    <label for="category">Categoria:</label>
                     <select name="Selecione uma categoria" id="Selecion">
                         <option value="Vintage">Vintage</option>
                         <option value="Retrô">Retrô</option>
@@ -31,24 +31,48 @@ export const CreateThriftStorePage = () => {
                 </fieldset>
 
                 <fieldset>
-                    <label for="city">Cidade</label>
+                    <label for="city">Cidade:</label>
                     <input type="text" id="city" name="city" />
                 </fieldset>
 
                 <fieldset>
-                    <label for="phone">Telefone</label>
+                    <label for="phone">Telefone:</label>
                     <input type="tel" id="phone" name="phone" />
                 </fieldset>
 
                 <fieldset>
-                    <label for="email">E-mail</label>
+                    <label for="email">E-mail:</label>
                     <input type="text" id="email" name="email" />
                 </fieldset>
 
                 <fieldset>
-                    <label for="time">Horário</label>
+                    <label for="time">Horário de Atendimento:</label>
+                    <input type="time" id="time" name="time" />
                     <input type="time" id="time" name="time" />
                 </fieldset>
+
+                <fieldset>
+                    <label for="website">Site:</label>
+                    <input type="text" id="website" name="website" />
+                </fieldset>
+
+                <fieldset>
+                    <label for="Instagram">Instagram:</label>
+                    <input type="text" id="instagram" name="instagram" />
+                </fieldset>
+
+                <fieldset>
+                    <label for="img">Imagem:</label>
+                    <input type="img" id="img" name="img" />
+                </fieldset>
+
+                <fieldset>
+                    <label for="maps">Mapa:</label>
+                    <input type="img" id="img" name="img" />
+                </fieldset>
+
+                <button type="submit">Cadastrar Brechó</button>
+                <button type="reset">Cancelar</button>
             </form>
         </div>
     )
