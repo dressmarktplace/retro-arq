@@ -5,6 +5,8 @@ export const CreateThriftStorePage = () => {
 
         <div className="w-full">
             <form className="flex flex-col gap-4 p-4 max-w-lg mx-auto">
+                <label className="text-2xl font-bold mb-4 ">Cadastro de novo Brechó</label>
+
                 <fieldset>
                     <label for="name">Nome do brechó:</label>
                     <input type="text" id="name" name="name" />
@@ -17,6 +19,9 @@ export const CreateThriftStorePage = () => {
                         <option value="Retrô">Retrô</option>
                         <option value="Moderno">Moderno</option>
                         <option value="Fantasias">Fantasias</option>
+                        <option value="Luxo">Luxo</option>
+                        <option value="Outros">Outros</option>
+                        <option value="Todos">Todos</option>
                     </select>
                 </fieldset>
 
@@ -49,6 +54,8 @@ export const CreateThriftStorePage = () => {
                     <label for="time">Horário de Atendimento</label>
                     <input type="time" id="time" name="time" />
                     <input type="time" id="time" name="time" />
+                    <input type="time" id="time" name="time" />
+                    <input type="time" id="time" name="time" />
                 </fieldset>
 
                 <fieldset>
@@ -71,9 +78,10 @@ export const CreateThriftStorePage = () => {
                     <input type="img" id="maps" name="maps" />
                 </fieldset>
 
-                <button type="submit">Cadastrar Brechó:</button>
-                <input type="reset" value="Limpar formulário" />
-                <input type="button" value="Cancelar" />
+                <button type="submit">Enviar</button>
+                <button type="submit">Limpar</button>
+                <button type="submit">Cancelar</button>
+
 
             </form>
         </div >
