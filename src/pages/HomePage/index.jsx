@@ -43,6 +43,42 @@ const [selectedCategory, setSelectedCategory]=useState("all")
                     >
                         Outros
                     </button>
+                    <button
+                    onClick={() => setSelectedCategory("vintage")}
+                    className={`px-6 py-3 cursor-pointer rounded-full font-semibold transition-all duration-300 shadow-md hover:shadow-lg ${selectedCategory === "vintage" ? "bg-linear-to-r from-amber-600 to-amber-800 text-white scale-105" : "bg-white text-amber-700 hover:bg-gray-50"}`}
+                    >
+                        Vintage
+                    </button>
+                    <button
+                    onClick={() => setSelectedCategory("retro")}
+                    className={`px-6 py-3 cursor-pointer rounded-full font-semibold transition-all duration-300 shadow-md hover:shadow-lg ${selectedCategory === "retro" ? "bg-linear-to-r from-amber-600 to-amber-800 text-white scale-105" : "bg-white text-amber-700 hover:bg-gray-50"}`}
+                    >
+                        Retrô
+                    </button>
+                    <button
+                    onClick={() => setSelectedCategory("modern")}
+
+
+                    className={`px-6 py-3 cursor-pointer rounded-full font-semibold transition-all duration-300 shadow-md hover:shadow-lg ${selectedCategory === "modern" ? "bg-linear-to-r from-amber-600 to-amber-800 text-white scale-105" : "bg-white text-amber-700 hover:bg-gray-50"}`}
+                    >
+                        Moderno
+                    </button>
+                    <button
+                    onClick={() => setSelectedCategory("costumes")}
+                    className={`px-6 py-3 cursor-pointer rounded-full font-semibold transition-all duration-300 shadow-md hover:shadow-lg ${selectedCategory === "costumes" ? "bg-linear-to-r from-amber-600 to-amber-800 text-white scale-105" : "bg-white text-amber-700 hover:bg-gray-50"}`}
+                    >
+                        Fantasias
+                    </button>           
+                  
+                    <button
+                    onClick={() => setSelectedCategory("luxury")}       
+                    className={`px-6 py-3 cursor-pointer rounded-full font-semibold transition-all duration-300 shadow-md hover:shadow-lg ${selectedCategory === "luxury" ? "bg-linear-to-r from-amber-600 to-amber-800 text-white scale-105" : "bg-white text-amber-700 hover:bg-gray-50"}`}
+                    >
+                        Luxo
+                    </button>       
+
+
+
                 </div>
             </div>
         </div>

@@ -4,14 +4,14 @@ export const CreateThriftStorePage = () => {
     return (
 
         <div className="w-full">
-            <form >
+            <form className="flex flex-col gap-4 p-4 max-w-lg mx-auto">
                 <fieldset>
                     <label for="name">Nome do brechó:</label>
                     <input type="text" id="name" name="name" />
                 </fieldset>
 
                 <fieldset>
-                    <label for="category">Categoria:</label>
+                    <label for="category">Categorias:</label>
                     <select name="Selecione uma categoria" id="Selecion">
                         <option value="Vintage">Vintage</option>
                         <option value="Retrô">Retrô</option>
@@ -31,49 +31,51 @@ export const CreateThriftStorePage = () => {
                 </fieldset>
 
                 <fieldset>
-                    <label for="city">Cidade:</label>
+                    <label for="city">Cidade</label>
                     <input type="text" id="city" name="city" />
                 </fieldset>
 
                 <fieldset>
-                    <label for="phone">Telefone:</label>
+                    <label for="phone">Telefone</label>
                     <input type="tel" id="phone" name="phone" />
                 </fieldset>
 
                 <fieldset>
-                    <label for="email">E-mail:</label>
+                    <label for="email">E-mail</label>
                     <input type="text" id="email" name="email" />
                 </fieldset>
 
                 <fieldset>
-                    <label for="time">Horário de Atendimento:</label>
+                    <label for="time">Horário de Atendimento</label>
                     <input type="time" id="time" name="time" />
                     <input type="time" id="time" name="time" />
                 </fieldset>
 
                 <fieldset>
-                    <label for="website">Site:</label>
-                    <input type="text" id="website" name="website" />
+                    <label for="Website">Site:</label>
+                    <input type="text" id="Website" name="Website" />
                 </fieldset>
 
                 <fieldset>
-                    <label for="Instagram">Instagram:</label>
-                    <input type="text" id="instagram" name="instagram" />
+                    <label for="socialmedia">Redes Sociais:</label>
+                    <input type="text" id="socialmedia" name="socialmedia" />
                 </fieldset>
 
                 <fieldset>
-                    <label for="img">Imagem:</label>
-                    <input type="img" id="img" name="img" />
+                    <label for="image">Imagem:</label>
+                    <input type="file" id="image" name="image" />
                 </fieldset>
 
                 <fieldset>
-                    <label for="maps">Mapa:</label>
-                    <input type="img" id="img" name="img" />
+                    <label for="maps">Localização:</label>
+                    <input type="img" id="maps" name="maps" />
                 </fieldset>
 
-                <button type="submit">Cadastrar Brechó</button>
-                <button type="reset">Cancelar</button>
+                <button type="submit">Cadastrar Brechó:</button>
+                <input type="reset" value="Limpar formulário" />
+                <input type="button" value="Cancelar" />
+
             </form>
-        </div>
+        </div >
     )
 }
