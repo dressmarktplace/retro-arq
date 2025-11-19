@@ -2,7 +2,7 @@ import { Search } from "lucide-react"
 import { useState } from "react"
 
 export const HomePage = () => {
-const [selectedCategory, setSelectedCategory]=useState("all")
+    const [selectedCategory, setSelectedCategory] = useState("all")
 
     return (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -32,50 +32,50 @@ const [selectedCategory, setSelectedCategory]=useState("all")
 
                 <div className="flex flex-wrap gap-3 justify-center">
                     <button
-                    onClick={() => setSelectedCategory("all")}
-                    className={`px-6 py-3 cursor-pointer rounded-full font-semibold transition-all duration-300 shadow-md hover:shadow-lg ${selectedCategory === "all" ? "bg-linear-to-r from-amber-600 to-zinc-800 text-white scale-105" : "bg-white text-amber-700 hover:bg-amber-50"}`}
+                        onClick={() => setSelectedCategory("all")}
+                        className={`px-6 py-3 cursor-pointer rounded-full font-semibold transition-all duration-300 shadow-md hover:shadow-lg ${selectedCategory === "all" ? "bg-linear-to-r from-amber-600 to-zinc-800 text-white scale-105" : "bg-white text-amber-700 hover:bg-amber-50"}`}
                     >
                         Todas
                     </button>
-                     <button
-                    onClick={() => setSelectedCategory("others")}
-                    className={`px-6 py-3 cursor-pointer rounded-full font-semibold transition-all duration-300 shadow-md hover:shadow-lg ${selectedCategory === "others" ? "bg-linear-to-r from-amber-600 to-amber-800 text-white scale-105" : "bg-white text-amber-700 hover:bg-gray-50"}`}
+                    <button
+                        onClick={() => setSelectedCategory("others")}
+                        className={`px-6 py-3 cursor-pointer rounded-full font-semibold transition-all duration-300 shadow-md hover:shadow-lg ${selectedCategory === "others" ? "bg-linear-to-r from-amber-600 to-amber-800 text-white scale-105" : "bg-white text-amber-700 hover:bg-gray-50"}`}
                     >
                         Outros
                     </button>
                     <button
-                    onClick={() => setSelectedCategory("vintage")}
-                    className={`px-6 py-3 cursor-pointer rounded-full font-semibold transition-all duration-300 shadow-md hover:shadow-lg ${selectedCategory === "vintage" ? "bg-linear-to-r from-amber-600 to-amber-800 text-white scale-105" : "bg-white text-amber-700 hover:bg-gray-50"}`}
+                        onClick={() => setSelectedCategory("vintage")}
+                        className={`px-6 py-3 cursor-pointer rounded-full font-semibold transition-all duration-300 shadow-md hover:shadow-lg ${selectedCategory === "vintage" ? "bg-linear-to-r from-amber-600 to-amber-800 text-white scale-105" : "bg-white text-amber-700 hover:bg-gray-50"}`}
                     >
                         Vintage
                     </button>
                     <button
-                    onClick={() => setSelectedCategory("retro")}
-                    className={`px-6 py-3 cursor-pointer rounded-full font-semibold transition-all duration-300 shadow-md hover:shadow-lg ${selectedCategory === "retro" ? "bg-linear-to-r from-amber-600 to-amber-800 text-white scale-105" : "bg-white text-amber-700 hover:bg-gray-50"}`}
+                        onClick={() => setSelectedCategory("retro")}
+                        className={`px-6 py-3 cursor-pointer rounded-full font-semibold transition-all duration-300 shadow-md hover:shadow-lg ${selectedCategory === "retro" ? "bg-linear-to-r from-amber-600 to-amber-800 text-white scale-105" : "bg-white text-amber-700 hover:bg-gray-50"}`}
                     >
                         Retrô
                     </button>
                     <button
-                    onClick={() => setSelectedCategory("modern")}
+                        onClick={() => setSelectedCategory("modern")}
 
 
-                    className={`px-6 py-3 cursor-pointer rounded-full font-semibold transition-all duration-300 shadow-md hover:shadow-lg ${selectedCategory === "modern" ? "bg-linear-to-r from-amber-600 to-amber-800 text-white scale-105" : "bg-white text-amber-700 hover:bg-gray-50"}`}
+                        className={`px-6 py-3 cursor-pointer rounded-full font-semibold transition-all duration-300 shadow-md hover:shadow-lg ${selectedCategory === "modern" ? "bg-linear-to-r from-amber-600 to-amber-800 text-white scale-105" : "bg-white text-amber-700 hover:bg-gray-50"}`}
                     >
                         Moderno
                     </button>
                     <button
-                    onClick={() => setSelectedCategory("costumes")}
-                    className={`px-6 py-3 cursor-pointer rounded-full font-semibold transition-all duration-300 shadow-md hover:shadow-lg ${selectedCategory === "costumes" ? "bg-linear-to-r from-amber-600 to-amber-800 text-white scale-105" : "bg-white text-amber-700 hover:bg-gray-50"}`}
+                        onClick={() => setSelectedCategory("costumes")}
+                        className={`px-6 py-3 cursor-pointer rounded-full font-semibold transition-all duration-300 shadow-md hover:shadow-lg ${selectedCategory === "costumes" ? "bg-linear-to-r from-amber-600 to-amber-800 text-white scale-105" : "bg-white text-amber-700 hover:bg-gray-50"}`}
                     >
                         Fantasias
-                    </button>           
-                  
+                    </button>
+
                     <button
-                    onClick={() => setSelectedCategory("luxury")}       
-                    className={`px-6 py-3 cursor-pointer rounded-full font-semibold transition-all duration-300 shadow-md hover:shadow-lg ${selectedCategory === "luxury" ? "bg-linear-to-r from-amber-600 to-amber-800 text-white scale-105" : "bg-white text-amber-700 hover:bg-gray-50"}`}
+                        onClick={() => setSelectedCategory("luxury")}
+                        className={`px-6 py-3 cursor-pointer rounded-full font-semibold transition-all duration-300 shadow-md hover:shadow-lg ${selectedCategory === "luxury" ? "bg-linear-to-r from-amber-600 to-amber-800 text-white scale-105" : "bg-white text-amber-700 hover:bg-gray-50"}`}
                     >
                         Luxo
-                    </button>       
+                    </button>
 
 
 

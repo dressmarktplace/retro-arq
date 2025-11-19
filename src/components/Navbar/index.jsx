@@ -21,12 +21,6 @@ export const Navbar = () => {
                         Cadastrar Brechó
                     </Link>
                 </div>
-            </div>
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-6">
-                    <Link to="/guia" className="flex items-center space-x-2 bg-linear-to-r from-amber-600 to-amber-800 text-white px-6 py-3 rounded-xl font-semibold hover:scale-105 transition-all duration-300">
-                        <Plus className="w-8 h-8" />
-                        Guia de Brechós
-                    </Link>
                 </div>
         </nav>
     )
