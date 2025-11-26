@@ -77,12 +77,26 @@ export const CreateThriftStorePage = () => {
         }
     };
 
-    const handleSubmit = (event) => {
-        event.preventDefault()
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setLoading(true);
 
-        console.log({formData})
-    }
+        try {
+            const validImageUrls = imageUrls.filter(url => url.trim() !== '');
 
+            console.log({
+                ...formData,
+                latitude: position[0],
+                longitude: position[1],
+                images: validImageUrls.map((url, index) => ({
+                    imageUrl: url,
+                    isPrimary: index === primaryImageIndex,
+                }))
+            })
+        } catch (error) {
+            console.error({ handleSubmitError: error })
+        }
+    };
     return (
 
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
