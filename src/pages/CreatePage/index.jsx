@@ -2,13 +2,16 @@ import { Store } from "lucide-react"
 import { TextField } from "../../components/TextField"
 import { SelectField } from "../../components/SelectField"
 import { TextareaField } from "../../components/TextAreaField"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Upload } from "lucide-react"
 import { Plus } from "lucide-react"
 import { X } from "lucide-react"
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { MapContainer, Marker, TileLayer, useMapEvents } from "react-leaflet"
+import axios from "axios"
+import { toast } from "react-toastify"
+import { useNavigate } from "react-router-dom"
 
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
@@ -29,6 +32,8 @@ const LocationMarker = ({ position, setPosition }) => {
 
 
 export const CreateThriftStorePage = () => {
+    const navigate = useNavigate()
+
     const [categories, setCategories] = useState([]);
     const [loading, setLoading] = useState(false);
     const [position, setPosition] = useState([-21.7909353, -48.1769214]);
@@ -47,6 +52,12 @@ export const CreateThriftStorePage = () => {
         categoryId: '',
         openingHours: '',
     });
+
+    useEffect(() => {
+        axios.get("/category", { baseURL: import.meta.env.VITE_API_URL })
+            .then(response => setCategories(response.data))
+            .catch(error => console.error({ getCategoriesError: error }))
+    }, [])
 
     const handleChange = (e) => {
         setFormData({
@@ -84,7 +95,7 @@ export const CreateThriftStorePage = () => {
         try {
             const validImageUrls = imageUrls.filter(url => url.trim() !== '');
 
-            console.log({
+            const payload = {
                 ...formData,
                 latitude: position[0],
                 longitude: position[1],
@@ -92,11 +103,24 @@ export const CreateThriftStorePage = () => {
                     imageUrl: url,
                     isPrimary: index === primaryImageIndex,
                 }))
-            })
+            }
+
+            const response = await axios.post("/thrift-store", payload, { baseURL: import.meta.env.VITE_API_URL })
+
+            if (response.status === 200) {
+                toast.success("Brechó cadastrado com sucesso")
+
+                navigate("/")
+            }
         } catch (error) {
             console.error({ handleSubmitError: error })
+
+            toast.error("Ocorreu um erro! Tente novamente em instantes")
+        } finally {
+            setLoading(false)
         }
     };
+
     return (
 
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -111,7 +135,7 @@ export const CreateThriftStorePage = () => {
                 <form className="space-y-8" onSubmit={handleSubmit}>
                     <section className="grid md:grid-cols-2 gap-6">
                         <TextField onChange={handleChange} label="Nome do brechó" id="name" name="name" type="text" />
-                        <SelectField onChange={handleChange} label="Selecione uma categoria" id="category" name="category" />
+                        <SelectField onChange={handleChange} label="Selecione uma categoria" id="categoryId" name="categoryId" options={categories} />
                     </section>
 
                     <TextareaField onChange={handleChange} label="Descrição" id="description" name="description" type="text" placeholder="Descreva seu brechó, o que você oferece, diferencias..." />

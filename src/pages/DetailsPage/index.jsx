@@ -11,7 +11,9 @@ import { useState } from "react"
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { MapContainer, Marker, Popup, TileLayer, useMapEvents } from "react-leaflet"
-import { Link } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
+import { useEffect } from "react"
+import axios from "axios"
 
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
@@ -21,29 +23,18 @@ L.Icon.Default.mergeOptions({
 });
 
 export const DetailsThriftStorePage = () => {
-    const [thriftStore, setThriftStore] = useState({
-        name: "Brechó da lulu",
-        address: "Rua das Flores",
-        city: "Araraquara",
-        socialMedia: "instagram.com/brecho_da_lulu",
-        uf: "SP",
-        phone: "16 912345-6789",
-        latitude: "-21.7909353", longitude: "-48.1769214",
-        openingHours: "SEG - SEX: 09:00 às 18:00",
-        email: "email@email.com",
-        website: "www.google.com",
-        category: { name: "Vintage" },
-        description: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quo magni iusto, blanditiis adipisci nihil aliquam esse similique laborum illo ipsam perferendis sunt sint deleniti inventore quasi nemo id nobis neque.",
-        images: [
-            {
-                image_url: "https://images.unsplash.com/photo-1624192647570-1131acc12ccf"
-            },
-            {
-                image_url: "https://images.unsplash.com/photo-1675537057530-312348c6caa2"
-            }
-        ]
-    })
+    const { id: thriftStoreId } = useParams()
+
+    const [thriftStore, setThriftStore] = useState(null)
     const [currentImageIndex, setCurrentImageIndex] = useState(0)
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        axios.get(`/thrift-store/${thriftStoreId}`, { baseURL: import.meta.env.VITE_API_URL })
+            .then(response => setThriftStore(response.data))
+            .catch(error => console.error({ getThriftStoresError: error }))
+            .finally(() => setLoading(false))
+    }, [])
 
     const handleNextImage = () => {
         if (thriftStore.images) {
@@ -55,6 +46,30 @@ export const DetailsThriftStorePage = () => {
         if (thriftStore.images) {
             setCurrentImageIndex(prev => (prev - 1 + thriftStore.images.length) % thriftStore.images.length)
         }
+    }
+
+    if (loading) {
+        return (
+            <div className="min-h-screen flex items-center justify-center">
+                <div className="text-center">
+                    <div className="inline-block animate-spin rounded-full h-16 w-16 border-4 border-gray-300 border-t-amber-600"></div>
+                    <p className="mt-4 text-gray-600 text-lg">Carregando informações...</p>
+                </div>
+            </div>
+        );
+    }
+
+    if (!thriftStore) {
+        return (
+            <div className="min-h-screen flex items-center justify-center">
+                <div className="text-center">
+                    <h2 className="text-2xl font-bold text-gray-900 mb-2">Brechó não encontrado</h2>
+                    <Link to="/" className="text-amber-600 hover:text-amber-700 font-semibold">
+                        Voltar para a página inicial
+                    </Link>
+                </div>
+            </div>
+        );
     }
 
     return (
@@ -69,11 +84,10 @@ export const DetailsThriftStorePage = () => {
                     {thriftStore?.images.length > 0 && (
                         <>
                             <img
-                                src={thriftStore.images[currentImageIndex].image_url}
+                                src={thriftStore.images[currentImageIndex].imageUrl}
                                 alt={thriftStore.name}
                                 className="w-full h-full object-cover"
                             />
-
                             {thriftStore.images.length > 1 && (
                                 <>
                                     <button

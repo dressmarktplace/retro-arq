@@ -1,8 +1,45 @@
+import axios from "axios"
 import { Search } from "lucide-react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { Card } from "../../components/Card"
 
 export const HomePage = () => {
+    const [categories, setCategories] = useState([])
+    const [thriftStores, setThriftStores] = useState([])
     const [selectedCategory, setSelectedCategory] = useState("all")
+    const [searchTerm, setSearchTerm] = useState('');
+
+    useEffect(() => {
+        fetchThriftStores()
+
+        fetchCategories()
+    }, [searchTerm, selectedCategory])
+
+    const fetchThriftStores = async () => {
+        try {
+            const response = await axios.get("/thrift-store", {
+                baseURL: import.meta.env.VITE_API_URL,
+                params: {
+                    q: searchTerm,
+                    categoryId: selectedCategory === "all" ? null : selectedCategory
+                }
+            })
+
+            setThriftStores(response.data)
+        } catch (error) {
+            console.error({ getThriftStoresError: error })
+        }
+    }
+
+    const fetchCategories = async () => {
+        try {
+            const response = await axios.get("/category", { baseURL: import.meta.env.VITE_API_URL })
+
+            setCategories(response.data)
+        } catch (error) {
+            console.error({ getCategoriesError: error })
+        }
+    }
 
     return (
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -15,8 +52,6 @@ export const HomePage = () => {
                 </h2>
             </article>
 
-
-
             <div className="mb-8">
                 <form>
                     <fieldset className="relative max-2xl mx-auto mb-6">
@@ -24,6 +59,8 @@ export const HomePage = () => {
 
                         <input
                             type="text"
+                            value={searchTerm}
+                            onChange={event => setSearchTerm(event.target.value)}
                             placeholder="Buscar por nome, cidade ou descrição..."
                             className=" w-full pl-12 pr-4 py-4 rounded-xl border-2 border-amber-200 text-lg shadow-sm focus:border-amber-800 focus:outline-none"
                         />
@@ -37,49 +74,21 @@ export const HomePage = () => {
                     >
                         Todas
                     </button>
-                    <button
-                        onClick={() => setSelectedCategory("others")}
-                        className={`px-6 py-3 cursor-pointer rounded-full font-semibold transition-all duration-300 shadow-md hover:shadow-lg ${selectedCategory === "others" ? "bg-linear-to-r from-amber-600 to-amber-800 text-white scale-105" : "bg-white text-amber-700 hover:bg-gray-50"}`}
-                    >
-                        Outros
-                    </button>
-                    <button
-                        onClick={() => setSelectedCategory("vintage")}
-                        className={`px-6 py-3 cursor-pointer rounded-full font-semibold transition-all duration-300 shadow-md hover:shadow-lg ${selectedCategory === "vintage" ? "bg-linear-to-r from-amber-600 to-amber-800 text-white scale-105" : "bg-white text-amber-700 hover:bg-gray-50"}`}
-                    >
-                        Vintage
-                    </button>
-                    <button
-                        onClick={() => setSelectedCategory("retro")}
-                        className={`px-6 py-3 cursor-pointer rounded-full font-semibold transition-all duration-300 shadow-md hover:shadow-lg ${selectedCategory === "retro" ? "bg-linear-to-r from-amber-600 to-amber-800 text-white scale-105" : "bg-white text-amber-700 hover:bg-gray-50"}`}
-                    >
-                        Retrô
-                    </button>
-                    <button
-                        onClick={() => setSelectedCategory("modern")}
 
-
-                        className={`px-6 py-3 cursor-pointer rounded-full font-semibold transition-all duration-300 shadow-md hover:shadow-lg ${selectedCategory === "modern" ? "bg-linear-to-r from-amber-600 to-amber-800 text-white scale-105" : "bg-white text-amber-700 hover:bg-gray-50"}`}
-                    >
-                        Moderno
-                    </button>
-                    <button
-                        onClick={() => setSelectedCategory("costumes")}
-                        className={`px-6 py-3 cursor-pointer rounded-full font-semibold transition-all duration-300 shadow-md hover:shadow-lg ${selectedCategory === "costumes" ? "bg-linear-to-r from-amber-600 to-amber-800 text-white scale-105" : "bg-white text-amber-700 hover:bg-gray-50"}`}
-                    >
-                        Fantasias
-                    </button>
-
-                    <button
-                        onClick={() => setSelectedCategory("luxury")}
-                        className={`px-6 py-3 cursor-pointer rounded-full font-semibold transition-all duration-300 shadow-md hover:shadow-lg ${selectedCategory === "luxury" ? "bg-linear-to-r from-amber-600 to-amber-800 text-white scale-105" : "bg-white text-amber-700 hover:bg-gray-50"}`}
-                    >
-                        Luxo
-                    </button>
-
-
-
+                    {categories.map(item => (
+                        <button
+                            key={item.id}
+                            onClick={() => setSelectedCategory(item.id)}
+                            className={`px-6 py-3 cursor-pointer rounded-full font-semibold transition-all duration-300 shadow-md hover:shadow-lg ${selectedCategory === item.id ? "bg-linear-to-r from-amber-600 to-amber-800 text-white scale-105" : "bg-white text-amber-700 hover:bg-gray-50"}`}
+                        >
+                            {item.name}
+                        </button>
+                    ))}
                 </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {thriftStores.map(item => <Card key={item.id} {...item} />)}
             </div>
         </div>
     )
