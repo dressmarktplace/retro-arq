@@ -1,16 +1,35 @@
-# React + Vite
+# 🚀 Retroarq - Conectando Brechós e Consumo Consciente
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+O **Retroarq** é uma vitrine digital desenvolvida para fortalecer o ecossistema de brechós em Araraquara/SP. O projeto une tecnologia e economia circular, facilitando o acesso de consumidores a peças únicas e promovendo o empreendedorismo local.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 💻 Sobre o Projeto
 
-## React Compiler
+Este projeto foi o meu trabalho final do curso de **Programação e Coding (160h)**, onde fui responsável por todo o desenvolvimento do **Frontend**. A aplicação permite que usuários localizem brechós fisicamente através de mapas integrados e naveguem por vitrines de produtos de forma intuitiva.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 🛠️ Stack Tecnológica
 
-## Expanding the ESLint configuration
+* **Framework:** [React.js](https://reactjs.org/) com **Vite** (para alta performance).
+* **Linguagem:** JavaScript.
+* **Estilização:** [Tailwind CSS](https://tailwindcss.com/) (Design responsivo e moderno).
+* **Mapas:** [Leaflet](https://leafletjs.com/) (Integração de geolocalização).
+* **Ícones:** [Lucide-React](https://lucide.dev/).
+* **Feedback:** [React-Toastify](https://fkhadra.github.io/react-toastify/introduction/).
+* **Deploy:** [Vercel](https://vercel.com/).
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🎨 Processo de UX/UI Design
+
+O desenvolvimento não começou no código. Utilizei o **Figma** para a prototipagem de alta fidelidade e o **Lucide** para o mapeamento da jornada do usuário, garantindo que a interface fosse:
+1. **Acessível:** Foco em usabilidade mobile (Mobile First).
+2. **Intuitiva:** Navegação clara entre categorias e localização.
+3. **Visualmente Atraente:** Paleta de cores que remete à sustentabilidade e moda.
+
+---
+
+## 🚀 Como visualizar o projeto
+
+O projeto está disponível online através da Vercel:
+🔗 **[Visualizar Retroarq Live](https://retro-arq.vercel.app/)**
