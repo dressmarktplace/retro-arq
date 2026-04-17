@@ -9,9 +9,16 @@ export const HomePage = () => {
     const [selectedCategory, setSelectedCategory] = useState("all")
     const [searchTerm, setSearchTerm] = useState('');
 
+    // Suas categorias do Figma
+    const manualCategories = [
+        { id: "vintage", name: "Vintage" },
+        { id: "retro", name: "Retrô" },
+        { id: "luxo", name: "Luxo" },
+        { id: "outros", name: "Outros" }
+    ];
+
     useEffect(() => {
         fetchThriftStores()
-
         fetchCategories()
     }, [searchTerm, selectedCategory])
 
@@ -24,7 +31,6 @@ export const HomePage = () => {
                     categoryId: selectedCategory === "all" ? null : selectedCategory
                 }
             })
-
             setThriftStores(response.data)
         } catch (error) {
             console.error({ getThriftStoresError: error })
@@ -34,7 +40,6 @@ export const HomePage = () => {
     const fetchCategories = async () => {
         try {
             const response = await axios.get("/category", { baseURL: import.meta.env.VITE_API_URL })
-
             setCategories(response.data)
         } catch (error) {
             console.error({ getCategoriesError: error })
@@ -48,26 +53,26 @@ export const HomePage = () => {
                     Encontre o <span className="bg-linear-to-r from-amber-600 to-amber-800 bg-clip-text text-transparent">Brechó perfeito</span>
                 </h1>
                 <h2 className="text-xl text-amber-600 max-w-2xl mx-auto">
-                    Descubra brechós incriveis perto de você. Moda sustentável, peças únicas e preços acessíveis
+                    Descubra brechós incríveis perto de você. Moda sustentável, peças únicas e preços acessíveis
                 </h2>
             </article>
 
             <div className="mb-8">
-                <form>
+                <form onSubmit={(e) => e.preventDefault()}>
                     <fieldset className="relative max-2xl mx-auto mb-6">
                         <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-amber-400 h-5 w-5" />
-
                         <input
                             type="text"
                             value={searchTerm}
                             onChange={event => setSearchTerm(event.target.value)}
                             placeholder="Buscar por nome, cidade ou descrição..."
-                            className=" w-full pl-12 pr-4 py-4 rounded-xl border-2 border-amber-200 text-lg shadow-sm focus:border-amber-800 focus:outline-none"
+                            className="w-full pl-12 pr-4 py-4 rounded-xl border-2 border-amber-200 text-lg shadow-sm focus:border-amber-800 focus:outline-none"
                         />
                     </fieldset>
                 </form>
 
                 <div className="flex flex-wrap gap-3 justify-center">
+                    {/* Botão Todas */}
                     <button
                         onClick={() => setSelectedCategory("all")}
                         className={`px-6 py-3 cursor-pointer rounded-full font-semibold transition-all duration-300 shadow-md hover:shadow-lg ${selectedCategory === "all" ? "bg-linear-to-r from-amber-600 to-zinc-800 text-white scale-105" : "bg-white text-amber-700 hover:bg-amber-50"}`}
@@ -75,7 +80,8 @@ export const HomePage = () => {
                         Todas
                     </button>
 
-                    {categories.map(item => (
+                    {/* Categorias Manuais do Figma */}
+                    {manualCategories.map(item => (
                         <button
                             key={item.id}
                             onClick={() => setSelectedCategory(item.id)}
