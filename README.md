@@ -6,14 +6,14 @@ O **Retroarq** é uma vitrine digital desenvolvida para fortalecer o ecossistema
 
 ## 💻 Sobre o Projeto
 
-Este projeto foi o meu trabalho final do curso de **Programação e Coding (160h)**, onde fui responsável por todo o desenvolvimento do **Frontend**. A aplicação permite que usuários localizem brechós fisicamente através de mapas integrados e naveguem por vitrines de produtos de forma intuitiva.
+Este projeto foi o meu trabalho final do curso de **Programação e Coding (160h)**, onde fui responsável por todo o desenvolvimento do **Frontend**. A aplicação permite que usuários localizem brechós fisicamente através de mapas integrados e encontre os brechós de acordo com a sua categoria facilitando a busca e explorando todos os existentes de modo geral. Também permite que os proprietários de brechós cadastrem suas lojas para colaborar com a busca dos usuários.
 
 ### 🛠️ Stack Tecnológica
 
-* **Framework:** [React.js](https://reactjs.org/) com **Vite** (para alta performance).
+* **Framework:** [React.js](https://reactjs.org/) com **Vite** 
 * **Linguagem:** JavaScript.
-* **Estilização:** [Tailwind CSS](https://tailwindcss.com/) (Design responsivo e moderno).
-* **Mapas:** [Leaflet](https://leafletjs.com/) (Integração de geolocalização).
+* **Estilização:** [Tailwind CSS](https://tailwindcss.com/) 
+* **Mapas:** [Leaflet](https://leafletjs.com/) 
 * **Ícones:** [Lucide-React](https://lucide.dev/).
 * **Feedback:** [React-Toastify](https://fkhadra.github.io/react-toastify/introduction/).
 * **Deploy:** [Vercel](https://vercel.com/).
